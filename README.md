@@ -23,6 +23,8 @@ You have to specify the `sensorType` (11 for DHT11; 22 for DHT22 or AM2302) and 
   "accessories": [{
     "accessory": "DhtSensor",
     "name": "Sensor",
+    "name_humidity": "Humidity",
+    "name_temperature": "Temperature",
     "sensorType": 22,
     "gpioPin": 17
   }],
