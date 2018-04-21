@@ -7,7 +7,9 @@ export default function createDhtSensor({ Service, Characteristic }) {
   return class DhtSensor {
     constructor(log, config) {
       this.log = log
-      this.name = config.name
+        this.name = config.name
+        this.name_humidity = config.name_humidity || config.name
+        this.name_temperature = config.name_temperature || config.name
       this.type = config.sensorType
       this.pin = config.gpioPin
       this.cacheTimeout = config.cacheTimeout || (60 * 1000) // 1 minute
@@ -17,8 +19,8 @@ export default function createDhtSensor({ Service, Characteristic }) {
       this.humidity = 0
       this.lastUpdate = null
 
-      this.humidityService = new Service.HumiditySensor(this.name)
-      this.temperatureService = new Service.TemperatureSensor(this.name)
+      this.humidityService = new Service.HumiditySensor(this.name_humidity)
+      this.temperatureService = new Service.TemperatureSensor(this.name_temperature)
 
 
       this.humidityService.getCharacteristic(CurrentRelativeHumidity)
